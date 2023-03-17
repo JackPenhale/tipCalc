@@ -21,7 +21,7 @@ function App() {
   ];
 
   useEffect(() => {
-    setTipPer((Math.round((((+bill * +tip) / +people)*100)/100)).toFixed(2));
+    setTipPer(Math.round((((+bill * +tip) / +people) * 100) / 100).toFixed(2));
     setTotal(((+bill * +tip + +bill) / +people).toFixed(2));
   }, [bill, tip, people]);
 
@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="w-screen h-screen bg-light-gray-cyan flex  flex-col justify-end md:justify-center align-middle items-center">
       <img className="pb-11" src={logo} />
-      <div className="flex flex-col md:flex-row justify-center align-middle items-center w-full h-4/5 bg-whitey rounded-3xl max-w-5xl md:w-2/3 md:h-2/5 pb-6 md:pb-0">
+      <div className="flex flex-col md:flex-row justify-center align-middle items-center w-full h-5/6  bg-whitey rounded-3xl max-w-5xl md:w-2/3 md:h-2/5  pb-6 md:pb-0 min-h-[550px]">
         <div className="w-10/12 md:w-5/12 h-5/6 flex flex-col justify-between">
           <h3 className="font-semibold text-lg text-dark-gray-cyan">Bill</h3>
           <form class="w-full max-w-sm">
@@ -47,7 +47,10 @@ function App() {
                   onChange={(e) => setBill(e.target.value)}
                   type="number"
                 />
-                <img src={dollarIcon} className="absolute bottom-3 left-2 w-5 h-auto" />
+                <img
+                  src={dollarIcon}
+                  className="absolute bottom-3 left-2 w-5 h-auto"
+                />
               </div>
             </div>
           </form>
@@ -59,11 +62,10 @@ function App() {
               if (!math) {
                 return (
                   <input
-                    class="bg-lighter-gray-cyan w-5/12 md:w-3/12 m-2 text-dark-cyan text-center py-2 font-extrabold text-xl focus:text-right "
+                    class="bg-lighter-gray-cyan w-5/12 md:w-3/12 m-2 text-dark-cyan text-center py-2 font-extrabold text-xl focus:text-right placeholder:text-dark-cyan"
                     name="number of people"
                     placeholder="Custom"
-                 
-                    onChange={(e) => setTip(e.target.value/100)}
+                    onChange={(e) => setTip(e.target.value / 100)}
                     type="number"
                   ></input>
                 );
@@ -96,41 +98,43 @@ function App() {
               <div class="md:w-full relative p-0 m-0">
                 <input
                   class="bg-lighter-gray-cyan  rounded w-full py-2 px-4 m-0 pl-7 focus:border-dark-cyan text-right text-3xl font-extrabold text-dark-cyan"
-                  name="bill cost"
                   name="number of people"
                   value={people}
                   onChange={(e) => setPeople(e.target.value)}
                   type="number"
                 />
-                <img src={personIcon} className="absolute bottom-3 left-2 w-5 h-auto" />
+                <img
+                  src={personIcon}
+                  className="absolute bottom-3 left-2 w-5 h-auto"
+                />
               </div>
             </div>
           </form>
         </div>
-        <div className="w-10/12 md:w-5/12 h-5/6 bg-dark-cyan rounded-3xl flex flex-col justify-between align-middle items-center p-4 md:p-0">
-          <div className="w-full flex flex-col align-middle items-center">
-            <div className="flex w-10/12 md:w-10/12 justify-between pb-8 pt-12">
-              <div>
+        <div className="w-10/12 md:w-5/12 h-4/6 m:h-5/6 bg-dark-cyan rounded-3xl flex flex-col justify-center md:justify-between align-middle items-center p-4 md:p-0">
+          <div className="w-full flex flex-col align-middle items-center justify-center h-full">
+            <div className="flex w-10/12 md:w-10/12 justify-between ">
+              <div >
                 <h3 className="font-semibold text-lg text-whitey">
                   Tip Amount
                 </h3>
                 <h4 className="text-gray-cyan">/ person</h4>
               </div>
-              <div className="text-6xl font-extrabold text-strong-cyan">
+              <div className="text-4xl m:text-6xl font-extrabold text-strong-cyan">
                 ${tipPer}
               </div>
             </div>
-            <div className="flex md:w-10/12 justify-between">
+            <div className="flex w-10/12 justify-between">
               <div>
                 <h3 className="font-semibold text-lg text-whitey">Total</h3>
                 <h4 className="text-gray-cyan">/ person</h4>
               </div>
-              <div className="text-6xl font-extrabold text-strong-cyan">
+              <div className="text-4xl m:text-6xl font-extrabold text-strong-cyan">
                 ${total}
               </div>
             </div>
           </div>
-          <div className="md:w-10/12 cursor-pointer bg-strong-cyan rounded-md font-bold text-xl h-12 text-center py-2 md:mb-7 text-dark-cyan">
+          <div className="w-10/12 cursor-pointer bg-strong-cyan rounded-md font-bold text-xl h-12 text-center py-2 md:mb-7 text-dark-cyan">
             Reset
           </div>
         </div>
